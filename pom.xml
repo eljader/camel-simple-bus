@@ -1,0 +1,145 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ru.cinimex</groupId>
+  <artifactId>camel-simple-bus</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>camel-simple-bus Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+    <cxf-version>3.0.4</cxf-version>
+    <camel-version>2.14.0</camel-version>
+    <junit-version>4.8.2</junit-version>
+  </properties>
+    
+  <dependencies>  
+	<dependency>
+	    <groupId>org.apache.camel</groupId>
+	     <artifactId>camel-core</artifactId>
+	     <version>${camel-version}</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>org.apache.camel</groupId>
+    	<artifactId>camel-cxf</artifactId>
+	    <version>${camel-version}</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>org.apache.camel</groupId>
+	    <artifactId>camel-spring</artifactId>
+	    <version>${camel-version}</version>
+	</dependency>
+	
+    <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-servlet</artifactId>
+        <version>${camel-version}</version>
+    </dependency>
+	
+	<dependency>
+		<groupId>org.apache.cxf</groupId>
+		<artifactId>cxf-rt-frontend-jaxws</artifactId>
+		<version>${cxf-version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.cxf</groupId>
+	    <artifactId>cxf-rt-transports-http</artifactId>
+	    <version>${cxf-version}</version>
+	</dependency>
+		
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>4.1.0.RELEASE</version>
+	</dependency>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit-version}</version>
+      <scope>test</scope>
+    </dependency>     
+  </dependencies>
+  
+  <build>
+    <finalName>camel-simple-bus</finalName>
+    
+    <plugins>	    		
+		<plugin>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-codegen-plugin</artifactId>
+		    <version>${cxf-version}</version>
+		    <executions>
+		        <execution>
+		            <id>generate-sources</id>
+		            <phase>generate-sources</phase>
+		            <configuration>
+		                <sourceRoot>${basedir}/target/generated</sourceRoot>
+		                <wsdlOptions>
+		                    <wsdlOption>
+		                        <wsdl>${basedir}/src/main/resources/ru/cinimex/bus/wsdl/report_incident.wsdl</wsdl>
+		                    </wsdlOption>
+		                    <wsdlOption>
+		                        <wsdl>${basedir}/src/main/resources/ru/cinimex/bus/wsdl/spbus.wsdl</wsdl>
+		                    </wsdlOption>
+		                </wsdlOptions>
+		            </configuration>
+		            <goals>
+		                <goal>wsdl2java</goal>
+		            </goals>
+		        </execution>
+		    </executions>
+		</plugin>
+		
+		<plugin>
+		  <artifactId>maven-war-plugin</artifactId>
+		  <configuration>
+		    <archive>
+		      <!-- add the generated manifest to the war -->
+		      <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+		    </archive>
+		  </configuration>
+		</plugin>
+		
+		<plugin>
+	        <groupId>org.apache.felix</groupId>
+	        <artifactId>maven-bundle-plugin</artifactId>
+	        <executions>
+	          <execution>
+	            <id>bundle-manifest</id>
+	            <phase>process-classes</phase>
+	            <goals>
+	              <goal>manifest</goal>
+	            </goals>
+	          </execution>
+	        </executions>
+	        <configuration>
+	          <supportedProjectTypes>
+	            <supportedProjectType>jar</supportedProjectType>
+	            <supportedProjectType>bundle</supportedProjectType>
+	            <supportedProjectType>war</supportedProjectType>
+	          </supportedProjectTypes>
+	          <instructions>
+	            <Bundle-SymbolicName>camel-simple-bus</Bundle-SymbolicName>
+	            <Bundle-Version>1.0.0</Bundle-Version>
+	            <!--
+	               | assume public classes are in the top package, and private classes are under ".internal"
+	            -->
+	            <Export-Package>!ru.cinimex.internal.*,ru.cinimex.*;version="1.0.0"</Export-Package>
+	            <Private-Package>ru.cinimex.internal.*</Private-Package>
+	            <!--
+	               | each module can override these defaults in their osgi.bnd file
+	            -->
+	            <_include>-osgi.bnd</_include>
+	          </instructions>
+	        </configuration>
+	      </plugin>
+	</plugins>
+  </build>
+  
+  
+</project>

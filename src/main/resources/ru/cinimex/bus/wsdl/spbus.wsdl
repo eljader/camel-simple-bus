@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://bus.cinimex.ru"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tp1="http://bus.cinimex.ru/type1"
+	xmlns:tp2="http://bus.cinimex.ru/type2"
+	targetNamespace="http://bus.cinimex.ru">
+
+    <wsdl:types>
+        <xs:schema targetNamespace="http://bus.cinimex.ru">          
+            <xs:import namespace="http://bus.cinimex.ru/type1" schemaLocation="../xsd/type1.xsd"/>
+            <xs:import namespace="http://bus.cinimex.ru/type2" schemaLocation="../xsd/type2.xsd"/>
+            
+            <xs:element name="inputTransform1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="tp1:user"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            
+            <xs:element name="outputTransform1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="tp2:interestList"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>          
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="inputTransform1">
+        <wsdl:part name="in" element="tns:inputTransform1"/>
+    </wsdl:message>
+    <wsdl:message name="outputTransform1">
+        <wsdl:part name="out" element="tns:outputTransform1"/>
+    </wsdl:message>
+
+    <wsdl:portType name="SPBusEndpoint">
+        <wsdl:operation name="Transform1">
+            <wsdl:input message="tns:inputTransform1"/>
+            <wsdl:output message="tns:outputTransform1"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="SPBusBinding" type="tns:SPBusEndpoint">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="Transform1">
+            <soap:operation soapAction="http://bus.cinimex.ru/Transform1"/>
+            <wsdl:input>
+                <soap:body parts="in" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="out" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="SPBusEndpointService">
+        <wsdl:port name="SPBusService" binding="tns:SPBusBinding">
+            <soap:address location="http://localhost:8080/camel-simple-bus/webservices/SPBusService"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

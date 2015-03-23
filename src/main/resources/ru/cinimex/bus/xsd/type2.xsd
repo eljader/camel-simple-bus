@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:tns="http://bus.cinimex.ru/type2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bus.cinimex.ru/type2">
+	
+	<xsd:element name="interestList">
+	    <xsd:complexType>
+	        <xsd:sequence>
+	            <xsd:element type="tns:interest" name="interest" minOccurs="0" maxOccurs="unbounded" />
+	        </xsd:sequence>
+	        <xsd:attribute type="xsd:integer" name="userCount" use="required" />
+	    </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:complexType name="interest">
+        <xsd:sequence>
+            <xsd:element type="tns:user" name="user" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>     
+    
+    <xsd:complexType name="user">
+        <xsd:attribute type="xsd:integer" name="name" use="required" />
+        <xsd:attribute type="xsd:integer" name="age" use="required" />
+        <xsd:attribute type="xsd:integer" name="messagesCount" use="required" />
+    </xsd:complexType>  
+</xsd:schema>
