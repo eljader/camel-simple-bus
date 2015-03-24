@@ -4,17 +4,22 @@
        xmlns:camel="http://camel.apache.org/schema/spring"
        xmlns:cxf="http://camel.apache.org/schema/cxf"
        xsi:schemaLocation="
-         http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
-         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
-         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	  <!-- We still need it for loading the CXFServlet --> 
-      <import resource="classpath:META-INF/cxf/cxf.xml" />
-      <import resource="classpath*:META-INF/cxf/cxf-extension-*.xml" />
-	  
-	  <bean id="router" class="ru.cinimex.export.ws.SPBusServiceRoutes"/>
-	
-	  <!-- create a camel context as to start Camel -->
-	  <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-		 <routeBuilder ref="router" />
-	  </camelContext>
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+           http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+  <cxf:cxfEndpoint id="SPBusService"
+                   address="/camel-simple-bus/webservices/SPBusService"
+                   endpointName="s:SPBusEndpoint"
+                   serviceName="s:SPBusEndpointService"
+                   wsdlURL="ru/cinimex/bus/wsdl/rspbus.wsdl"
+                   serviceClass="ru.cinimex.bus.SPBusEndpoint"
+                   xmlns:s="http://bus.cinimex.ru"/>
+
+  <bean id="router" class="ru.cinimex.export.ws.SPBusServiceRoutes"/>
+
+  <camel:camelContext id="camel">
+    <camel:routeBuilder ref="router"/>
+  </camel:camelContext>
+
 </beans>
