@@ -10,15 +10,15 @@
 
   <cxf:cxfEndpoint id="SPBusService"
                    address="/camel-simple-bus/webservices/SPBusService"
-                   endpointName="s:SPBusEndpoint"
+                   endpointName="s:SPBusService"
                    serviceName="s:SPBusEndpointService"
-                   wsdlURL="ru/cinimex/bus/wsdl/rspbus.wsdl"
+                   wsdlURL="wsdl/spbus.wsdl"
                    serviceClass="ru.cinimex.bus.SPBusEndpoint"
                    xmlns:s="http://bus.cinimex.ru"/>
 
   <bean id="router" class="ru.cinimex.export.ws.SPBusServiceRoutes"/>
 
-  <camel:camelContext id="camel">
+  <camel:camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
     <camel:routeBuilder ref="router"/>
   </camel:camelContext>
 
