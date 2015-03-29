@@ -83,7 +83,7 @@
 		                <sourceRoot>${basedir}/target/generated</sourceRoot>
 		                <wsdlOptions>
 		                    <wsdlOption>
-		                        <wsdl>${basedir}/src/main/resources/ru/cinimex/bus/wsdl/spbus.wsdl</wsdl>
+		                        <wsdl>${basedir}/src/main/resources/wsdl/spbus.wsdl</wsdl>
 		                    </wsdlOption>
 		                </wsdlOptions>
 		            </configuration>
