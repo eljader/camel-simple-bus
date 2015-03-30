@@ -4,7 +4,8 @@
        xmlns:camel="http://camel.apache.org/schema/spring"
        xmlns:cxf="http://camel.apache.org/schema/cxf"
        xsi:schemaLocation="
-           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd
            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
            http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
 
@@ -14,7 +15,12 @@
                    serviceName="s:SPBusEndpointService"
                    wsdlURL="wsdl/spbus.wsdl"
                    serviceClass="ru.cinimex.bus.SPBusEndpoint"
-                   xmlns:s="http://bus.cinimex.ru"/>
+                   xmlns:s="http://bus.cinimex.ru">
+                   
+        <cxf:properties>
+            <entry key="dataFormat" value="MESSAGE" />
+        </cxf:properties>
+  </cxf:cxfEndpoint>
 
   <bean id="router" class="ru.cinimex.export.ws.SPBusServiceRoutes"/>
 

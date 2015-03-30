@@ -5,8 +5,7 @@
 	    <xsd:complexType>
 	        <xsd:sequence>
 	            <xsd:element type="tns:interest" name="interest" minOccurs="0" maxOccurs="unbounded" />
-	        </xsd:sequence>
-	        <xsd:attribute type="xsd:integer" name="userCount" use="required" />
+	        </xsd:sequence>	        
 	    </xsd:complexType>
     </xsd:element>
     
@@ -14,10 +13,11 @@
         <xsd:sequence>
             <xsd:element type="tns:user" name="user" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
+        <xsd:attribute type="xsd:integer" name="userCount" use="required" />
     </xsd:complexType>     
     
     <xsd:complexType name="user">
-        <xsd:attribute type="xsd:integer" name="name" use="required" />
+        <xsd:attribute type="xsd:string" name="name" use="required" />
         <xsd:attribute type="xsd:integer" name="age" use="required" />
         <xsd:attribute type="xsd:integer" name="messagesCount" use="required" />
     </xsd:complexType>  
