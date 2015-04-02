@@ -26,6 +26,19 @@
 		<artifactId>camel-cxf</artifactId>
 		<version>${camel-version}</version>
 	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.camel</groupId>
+		<artifactId>camel-soap</artifactId>
+		<version>${camel-version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.camel</groupId>
+		<artifactId>camel-saxon</artifactId>
+		<version>${camel-version}</version>
+	</dependency>
+	
 	<dependency>
 		<groupId>org.apache.cxf</groupId>
 		<artifactId>cxf-rt-frontend-jaxws</artifactId>
