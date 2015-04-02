@@ -8,6 +8,7 @@ public class SPBusServiceRoutes extends RouteBuilder {
       	
         from("cxf:bean:SPBusService")
          	.to("xslt:xslt/transform1.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
+         	.to("log:disply")
          	.to("xslt:xslt/transform1-response.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
         ;
     }

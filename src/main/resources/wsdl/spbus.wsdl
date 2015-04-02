@@ -16,7 +16,7 @@
             <xs:element name="inputTransform1">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element ref="tp1:user"/>
+                        <xs:element type="tp1:userList" name="userList"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -24,7 +24,7 @@
             <xs:element name="outputTransform1">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element ref="tp2:interestList"/>
+                        <xs:element type="tp2:interestList" name="interestList"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>          
