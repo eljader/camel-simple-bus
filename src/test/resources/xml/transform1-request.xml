@@ -3,18 +3,49 @@
    <soapenv:Header/>
    <soapenv:Body>
       <bus:inputTransform1>
-         <userList>
+         <userList>       
            <user>
             <name>ARS</name>
             <age>29</age>
-              <interestList>
-                <interest>
-                  <name>Music</name>
-                  <messagesCount>5</messagesCount>
-                </interest>
-              </interestList>
-              <messagesCount>5</messagesCount>
-           </user>
+            <interestList>
+              <interest>
+                <name>Diving</name>
+                <messagesCount>5</messagesCount>
+              </interest>
+              <interest>
+                <name>Music</name>
+                <messagesCount>5</messagesCount>
+              </interest>
+              <interest>
+                <name>Sport</name>
+                <messagesCount>2</messagesCount>
+              </interest>
+             <interest>
+                <name>Travel</name>
+                <messagesCount>1</messagesCount>
+              </interest>
+            </interestList>
+            <messagesCount>5</messagesCount>
+           </user>   
+           <user>
+            <name>ARS2</name>
+            <age>25</age>
+            <interestList>
+              <interest>
+                <name>Sport</name>
+                <messagesCount>2</messagesCount>
+              </interest>
+              <interest>
+                <name>Music</name>
+                <messagesCount>5</messagesCount>
+              </interest>
+              <interest>
+                <name>Travel</name>
+                <messagesCount>2</messagesCount>
+              </interest>
+            </interestList>
+            <messagesCount>3</messagesCount>
+           </user>      
          </userList>
       </bus:inputTransform1>
    </soapenv:Body>
