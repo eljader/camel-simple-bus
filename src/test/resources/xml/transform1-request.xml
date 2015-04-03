@@ -8,22 +8,10 @@
             <name>ARS</name>
             <age>29</age>
             <interestList>
-              <interest>
-                <name>Diving</name>
-                <messagesCount>5</messagesCount>
-              </interest>
-              <interest>
-                <name>Music</name>
-                <messagesCount>5</messagesCount>
-              </interest>
-              <interest>
-                <name>Sport</name>
-                <messagesCount>2</messagesCount>
-              </interest>
-             <interest>
-                <name>Travel</name>
-                <messagesCount>1</messagesCount>
-              </interest>
+              <diving><messagesCount>5</messagesCount></diving>
+              <music><messagesCount>5</messagesCount></music>
+              <sport><messagesCount>2</messagesCount></sport>
+              <travel><messagesCount>1</messagesCount></travel>
             </interestList>
             <messagesCount>5</messagesCount>
            </user>   
@@ -31,18 +19,9 @@
             <name>ARS2</name>
             <age>25</age>
             <interestList>
-              <interest>
-                <name>Sport</name>
-                <messagesCount>2</messagesCount>
-              </interest>
-              <interest>
-                <name>Music</name>
-                <messagesCount>5</messagesCount>
-              </interest>
-              <interest>
-                <name>Travel</name>
-                <messagesCount>2</messagesCount>
-              </interest>
+              <sport><messagesCount>2</messagesCount></sport>
+              <music><messagesCount>5</messagesCount></music>
+              <travel><messagesCount>2</messagesCount></travel>
             </interestList>
             <messagesCount>3</messagesCount>
            </user>      
