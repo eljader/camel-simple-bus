@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+           http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+	<cxf:cxfEndpoint id="SPBusService"
+		address="/camel-simple-bus/webservices/SPBusService" endpointName="s:SPBusService"
+		serviceName="s:SPBusEndpointService" wsdlURL="wsdl/spbus.wsdl"
+		serviceClass="ru.cinimex.bus.SPBusEndpoint" xmlns:s="http://bus.cinimex.ru">
+
+		<cxf:properties>
+			<entry key="dataFormat" value="PAYLOAD" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+		
+	
+	<bean name="db2" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName">
+	        <value>osgi:service/jdbc/acsbus</value>
+	    </property>
+	</bean>
+			 
+	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="db2"/>
+	    <property name="persistenceUnitName" value="camel-simple-bus-jpa"/>
+	    
+	   <property name="jpaVendorAdapter">
+			<bean
+				class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="eclipselink.ddl-generation">create-tables</prop>
+				<prop key="eclipselink.ddl-generation.output-mode">database</prop>
+				<prop key="eclipselink.logging.level">INFO</prop>
+				<prop key="eclipselink.weaving">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
+		<property name="entityManagerFactory" ref="emf" />
+	</bean>
+	
+	<bean id="router" class="ru.cinimex.export.ws.SPBusServiceRoutes" />
+
+	<camel:camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+		<camel:routeBuilder ref="router" />
+	</camel:camelContext>
+
+</beans>
