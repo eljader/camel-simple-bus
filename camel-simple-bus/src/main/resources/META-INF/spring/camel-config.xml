@@ -4,11 +4,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:camel="http://camel.apache.org/schema/spring"
 	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
 	xsi:schemaLocation="
            http://www.springframework.org/schema/beans 
            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
-           http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+           http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+           http://www.springframework.org/schema/osgi
+           http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
 	<cxf:cxfEndpoint id="SPBusService"
 		address="/camel-simple-bus/webservices/SPBusService" endpointName="s:SPBusService"
@@ -20,15 +23,10 @@
 		</cxf:properties>
 	</cxf:cxfEndpoint>
 		
-	
-	<bean name="db2" class="org.springframework.jndi.JndiObjectFactoryBean">
-    	<property name="jndiName">
-	        <value>osgi:service/jdbc/acsbus</value>
-	    </property>
-	</bean>
+	<osgi:reference id="dataSource" interface="javax.sql.DataSource" filter="(osgi.jndi.service.name=jdbc/acsbus-pg)" /> 
 			 
 	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="db2"/>
+		<property name="dataSource" ref="dataSource"/>
 	    <property name="persistenceUnitName" value="camel-simple-bus-jpa"/>
 	    
 	   <property name="jpaVendorAdapter">

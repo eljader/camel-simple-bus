@@ -1,6 +1,6 @@
-create schema ACSBUS;
+CREATE SCHEMA ACSBUS;
 
-create table ACSBUS.transformresult (
+CREATE TABLE ACSBUS.transformresult (
 	sid integer not null GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1),
 	payload CLOB NOT NULL,
 	PRIMARY KEY (sid)

@@ -16,6 +16,10 @@ mvn install:install-file -Dfile="db2jcc.jar" -DgroupId=com.ibm.db2.jdbc -Dartifa
 
 install -s wrap:mvn:com.ibm.db2.jdbc/db2jcc
 
+PG
+
+install -s wrap:mvn:postgresql/postgresql/9.1-901.jdbc4
+
 Features 
 
 feature:repo-add mvn:ru.cinimex/features/1.0-SNAPSHOT/xml/features
