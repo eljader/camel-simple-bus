@@ -49,7 +49,7 @@
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
 		
-	<bean id="router" class="ru.cinimex.route.SPBusServiceRoutes">
+	<bean id="router" class="ru.cinimex.csb.route.SPBusServiceRoutes">
 		<property name="converters">
 			<list>
 				<bean id="TransformResultTypeConverter" class="ru.cinimex.csb.converter.TransformResultTypeConverter"/>

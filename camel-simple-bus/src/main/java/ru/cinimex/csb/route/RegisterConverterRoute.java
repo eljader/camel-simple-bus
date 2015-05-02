@@ -1,4 +1,4 @@
-package ru.cinimex.route;
+package ru.cinimex.csb.route;
 
 import java.util.List;
 

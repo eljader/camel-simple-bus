@@ -1,4 +1,4 @@
-package ru.cinimex.route;
+package ru.cinimex.csb.route;
 
 public class SPBusServiceRoutes extends RegisterConverterRoute {
 		
