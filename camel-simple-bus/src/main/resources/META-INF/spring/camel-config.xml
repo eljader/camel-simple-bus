@@ -48,8 +48,14 @@
 	<bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
-	
-	<bean id="router" class="ru.cinimex.export.ws.SPBusServiceRoutes" />
+		
+	<bean id="router" class="ru.cinimex.route.SPBusServiceRoutes">
+		<property name="converters">
+			<list>
+				<bean id="TransformResultTypeConverter" class="ru.cinimex.csb.converter.TransformResultTypeConverter"/>
+			</list>
+		</property>
+	</bean>
 
 	<camel:camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
 		<camel:routeBuilder ref="router" />

@@ -9,6 +9,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name = "TRANSFORMRESULT",schema="ACSBUS")
 @NamedQuery(name="Transformresult.findAll", query="SELECT t FROM Transformresult t")
 public class Transformresult implements Serializable {
 	private static final long serialVersionUID = 1L;

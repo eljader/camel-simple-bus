@@ -6,7 +6,7 @@
       <property name="user" value="postgres"/>
       <property name="password" value="postgres"/>
       <property name="dataSourceName" value="myConnectionPool"/>
-      <property name="initialConnections" value="2"/>
+      <property name="initialConnections" value="1"/>
       <property name="maxConnections" value="4" />
   </bean>
   

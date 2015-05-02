@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
 	<persistence-unit name="camel-simple-bus-jpa" transaction-type="RESOURCE_LOCAL">
-		<class>ru.cinimex.csb.model.Transformresult</class>
+	 	<class>ru.cinimex.csb.model.Transformresult</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 	</persistence-unit>
 

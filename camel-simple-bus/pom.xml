@@ -83,12 +83,6 @@
 	  <version>${jpa.eclipselink.version}</version>
 	</dependency>
 	
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-context</artifactId>
-		<version>4.0.7.RELEASE</version>
-	</dependency>
-	
   </dependencies>
   
   <build>
@@ -126,11 +120,11 @@
 				<manifestLocation>target/META-INF</manifestLocation>
 				<instructions>
 					<Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-					<Export-Package>ru.cinimex*</Export-Package>
+					<Export-Package>ru.cinimex</Export-Package>
 					<Import-Package>	
-						    net.cristcost.test.jpa.*,
-							org.eclipse.persistence.jpa,
-							javax.persistence.*,
+							org.eclipse.persistence,
+							javax.persistence,
+							javax.persistence.criteria;version="[2.0.0, 3.0.0)";resolution:=optional
 							javax.sql,
 							*
 					</Import-Package>
