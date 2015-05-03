@@ -45,6 +45,22 @@
                         <xs:element type="tp3:userList" name="userList"/>
                     </xs:sequence>
                 </xs:complexType>
+            </xs:element> 
+            
+            <xs:element name="inputTransform3">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="tp2:interestList" name="interestList"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            
+            <xs:element name="outputTransform3">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="xs:boolean" name="success"/>
+                    </xs:sequence>
+                </xs:complexType>
             </xs:element>          
         </xs:schema>
     </wsdl:types>
@@ -63,6 +79,13 @@
         <wsdl:part name="out" element="tns:outputTransform2"/>
     </wsdl:message>
 
+	<wsdl:message name="inputTransform3">
+        <wsdl:part name="in" element="tns:inputTransform3"/>
+    </wsdl:message>
+    <wsdl:message name="outputTransform3">
+        <wsdl:part name="out" element="tns:outputTransform3"/>
+    </wsdl:message>
+	
     <wsdl:portType name="SPBusEndpoint">
         <wsdl:operation name="Transform1">
             <wsdl:input message="tns:inputTransform1"/>
@@ -72,6 +95,10 @@
         <wsdl:operation name="Transform2">
             <wsdl:input message="tns:inputTransform2"/>
             <wsdl:output message="tns:outputTransform2"/>
+        </wsdl:operation>
+        <wsdl:operation name="Transform3">
+            <wsdl:input message="tns:inputTransform3"/>
+            <wsdl:output message="tns:outputTransform3"/>
         </wsdl:operation>
     </wsdl:portType>
     
@@ -88,6 +115,15 @@
         </wsdl:operation>
         <wsdl:operation name="Transform2">
             <soap:operation soapAction="http://bus.cinimex.ru/Transform2"/>
+            <wsdl:input>
+                <soap:body parts="in" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="out" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Transform3">
+            <soap:operation soapAction="http://bus.cinimex.ru/Transform3"/>
             <wsdl:input>
                 <soap:body parts="in" use="literal"/>
             </wsdl:input>

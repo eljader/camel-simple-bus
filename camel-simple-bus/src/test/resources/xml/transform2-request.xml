@@ -3,7 +3,7 @@
 	xmlns:bus="http://bus.cinimex.ru">
 	<soapenv:Header />
 	<soapenv:Body>
-		<bus:inputTransform1>
+		<bus:inputTransform2>
 			<userList>
 				<user>
 					<name>ARS</name>
@@ -48,6 +48,6 @@
 					<messagesCount>3</messagesCount>
 				</user>
 			</userList>
-		</bus:inputTransform1>
+		</bus:inputTransform2>
 	</soapenv:Body>
 </soapenv:Envelope>

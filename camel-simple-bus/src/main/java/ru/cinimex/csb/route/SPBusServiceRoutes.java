@@ -11,6 +11,7 @@ public class SPBusServiceRoutes extends RouteBuilder {
         	.choice()
         		.when(header(CxfConstants.OPERATION_NAME).isEqualTo("Transform1")).to("direct:transform1")
         		.when(header(CxfConstants.OPERATION_NAME).isEqualTo("Transform2")).to("direct:transform2")
+        		.when(header(CxfConstants.OPERATION_NAME).isEqualTo("Transform3")).to("direct:transform3")
         	.end()
         ;
         
@@ -24,6 +25,11 @@ public class SPBusServiceRoutes extends RouteBuilder {
 	    	.to("xslt:xslt/transform2.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
 	    	.to("direct:jpa-file")
 	    	.to("xslt:xslt/transform2-response.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
+	    ;
+        
+        from("direct:transform3")
+	    	.to("xslt:xslt/transform3.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
+	    	.to("xslt:xslt/transform3-response.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
 	    ;
         
         from("direct:jpa-file")

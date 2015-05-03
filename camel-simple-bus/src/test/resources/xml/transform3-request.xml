@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:bus="http://bus.cinimex.ru">
+	<soapenv:Header />
+	<soapenv:Body>
+		<bus:inputTransform3>
+			<interestList>
+				<diving userCount="1">
+					<userList>
+						<user name="ARS" age="29" messagesCount="5" />
+					</userList>
+				</diving>
+				<music userCount="2">
+					<userList>
+						<user name="ARS" age="29" messagesCount="5" />
+						<user name="ARS2" age="25" messagesCount="7" />
+					</userList>
+				</music>
+				<sport userCount="2">
+					<userList>
+						<user name="ARS" age="29" messagesCount="5" />
+						<user name="ARS2" age="25" messagesCount="3" />
+					</userList>
+				</sport>
+			</interestList>
+		</bus:inputTransform3>
+	</soapenv:Body>
+</soapenv:Envelope>
