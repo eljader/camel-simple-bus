@@ -49,13 +49,7 @@
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
 		
-	<bean id="router" class="ru.cinimex.csb.route.SPBusServiceRoutes">
-		<property name="converters">
-			<list>
-				<bean id="TransformResultTypeConverter" class="ru.cinimex.csb.converter.TransformResultTypeConverter"/>
-			</list>
-		</property>
-	</bean>
+	<bean id="router" class="ru.cinimex.csb.route.SPBusServiceRoutes"/>
 
 	<camel:camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
 		<camel:routeBuilder ref="router" />

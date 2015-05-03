@@ -1,8 +1,10 @@
 package ru.cinimex.csb.route;
 
-public class SPBusServiceRoutes extends RegisterConverterRoute {
+import org.apache.camel.builder.RouteBuilder;
+
+public class SPBusServiceRoutes extends RouteBuilder {
 		
-	public void __configure() throws Exception { 		
+	public void configure() throws Exception { 		
         from("cxf:bean:SPBusService")
         	.to("xslt:xslt/transform1.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
             .multicast()
