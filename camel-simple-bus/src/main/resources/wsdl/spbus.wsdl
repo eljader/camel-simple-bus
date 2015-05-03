@@ -68,15 +68,13 @@
             <wsdl:input message="tns:inputTransform1"/>
             <wsdl:output message="tns:outputTransform1"/>
         </wsdl:operation>
-    </wsdl:portType>
-    
-    <wsdl:portType name="SPBusEndpoint">
+        
         <wsdl:operation name="Transform2">
             <wsdl:input message="tns:inputTransform2"/>
             <wsdl:output message="tns:outputTransform2"/>
         </wsdl:operation>
     </wsdl:portType>
-
+    
     <wsdl:binding name="SPBusBinding" type="tns:SPBusEndpoint">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <wsdl:operation name="Transform1">
