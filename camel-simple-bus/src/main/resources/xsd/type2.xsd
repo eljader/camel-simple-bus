@@ -3,7 +3,7 @@
 	
     <xsd:complexType name="interestList">
         <xsd:sequence>
-            <xsd:element type="tns:interest" name="interest" minOccurs="0" maxOccurs="unbounded" />
+        	<xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>	        
     </xsd:complexType>
    

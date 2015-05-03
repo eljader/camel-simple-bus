@@ -9,7 +9,7 @@ import org.apache.camel.Converter;
 import ru.cinimex.csb.model.Transformresult;
 
 @Converter
-public class TransformResultTypeConverter {
+public final class TransformResultTypeConverter {
 
 	@Converter
 	public static Transformresult toTransformresult(String value) throws IOException {
