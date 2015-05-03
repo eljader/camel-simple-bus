@@ -10,7 +10,7 @@
     <xsd:complexType name="user">
       	<xsd:sequence>
               <xsd:element type="xsd:string" name="name" minOccurs="1" />
-              <xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+              <xsd:any processContents="lax" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
         <xsd:attribute type="xsd:integer" name="age" use="required" />
         <xsd:attribute type="xsd:integer" name="messagesCount" use="required" />

@@ -9,9 +9,9 @@
 	<xsl:template match="userList">
 		<interestList>
 		    <xsl:for-each-group select="user/interestList/interest" group-by="name">
-		    	<xsl:element name="{name}">  
 					<xsl:choose>
-						<xsl:when test="sum(current-group()/messagesCount) > 3">							 													
+						<xsl:when test="sum(current-group()/messagesCount) > 3">	
+							<xsl:element name="{name}"> 						 													
 								<xsl:for-each-group select="current-group()/../../../user[interestList/interest/name = current-grouping-key()]" group-by="name">
 									<xsl:choose>
 										<xsl:when test="position() = last()">
@@ -30,10 +30,10 @@
 											<xsl:attribute name="messagesCount"><xsl:value-of select="current-group()/messagesCount"/></xsl:attribute>
 										</user>						
 									</xsl:for-each-group>
-								</userList>										
+								</userList>
+							</xsl:element>													
 						</xsl:when>
 					</xsl:choose>
-				</xsl:element>		
 		    </xsl:for-each-group>
 	    </interestList>
 	</xsl:template>
