@@ -4,6 +4,9 @@ Base
 
 feature:install webconsole
 
+http://localhost:8181/system/console
+http://localhost:8181/cxf
+
 feature:install	camel-saxon
 
 feature:install camel-jpa
@@ -25,3 +28,10 @@ Features
 feature:repo-add mvn:ru.cinimex/features/1.0-SNAPSHOT/xml/features
 
 feature:install eclipselink-csb
+
+MQ
+
+features:chooseurl activemq 5.9.0
+features:install activemq-broker
+
+http://localhost:8181/activemqweb

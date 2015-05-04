@@ -1,5 +1,6 @@
 package ru.cinimex.csb.route;
 
+import org.apache.camel.ExchangePattern;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
 
@@ -29,6 +30,7 @@ public class SPBusServiceRoutes extends RouteBuilder {
         
         from("direct:transform3")
 	    	.to("xslt:xslt/transform3.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
+	    	.to(ExchangePattern.InOnly, "activemq:queue:T3.IN")
 	    	.to("xslt:xslt/transform3-response.xsl?transformerFactoryClass=net.sf.saxon.TransformerFactoryImpl")
 	    ;
         
